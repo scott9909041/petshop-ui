@@ -21,5 +21,11 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "./.eslintrc.cjs"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "paths": {
+    "@*": ["/*"],
+    "@lib/*": ["lib/*"],
+    "@features/*": ["features/*"],
+    "@pages/*": ["pages/*"]
+  },
 }
