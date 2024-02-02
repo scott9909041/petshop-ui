@@ -3,10 +3,20 @@ export interface Pet {
   name: string;
   type: string;
   color: string;
+  father?: Pet;
+  mother?: Pet;
 }
 
 export interface SearchPetParams {
   name: string;
+}
+
+export interface CreatePetReq {
+  name: string;
+  type: string;
+  color: string;
+  fatherId?: string;
+  motherId?: string;
 }
 
 export interface CreatePetResp {

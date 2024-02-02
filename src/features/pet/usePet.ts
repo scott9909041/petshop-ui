@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CreatePetResp, Pet, SearchPetParams, UpdatePetResp } from './pet.interface';
+import { CreatePetReq, CreatePetResp, Pet, SearchPetParams, UpdatePetResp } from './pet.interface';
 import { API_URL } from '../../lib/constants';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
@@ -94,14 +94,14 @@ export default function usePet(props: usePetProps): usePetReturn {
     isError: isPostError,
     error: postError,
   } = useMutation({
-    mutationFn: (pet: Pet) => axios.post<CreatePetResp>(`${API_URL}/pet`, pet).then((resp) => resp.data),
+    mutationFn: (pet: CreatePetReq) => axios.post<CreatePetResp>(`${API_URL}/pet`, pet).then((resp) => resp.data),
     onSuccess: (resp) => {
       queryClient.invalidateQueries({ queryKey: ['pets'] }).catch(() => {});
       onCreateSuccess?.(resp);
     },
   });
 
-  const createPet = (pet: Pet) => {
+  const createPet = (pet: CreatePetReq) => {
     mutatePost(pet);
   };
 
@@ -119,7 +119,7 @@ export default function usePet(props: usePetProps): usePetReturn {
     isError: isPatchError,
     error: patchError,
   } = useMutation({
-    mutationFn: (pet: Pet) => axios.patch<CreatePetResp>(`${API_URL}/pet/${pet.id}`, pet).then((resp) => resp.data),
+    mutationFn: (pet: Pet) => axios.patch<UpdatePetResp>(`${API_URL}/pet/${pet.id}`, pet).then((resp) => resp.data),
     onSuccess: (resp) => {
       queryClient.invalidateQueries({ queryKey: ['pets', pet?.id] }).catch(() => {});
       onUpdateSuccess?.(resp);
