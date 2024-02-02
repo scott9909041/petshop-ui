@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { CreatePetReq, CreatePetResp, Pet, SearchPetParams, UpdatePetResp } from './pet.interface';
+import { CreatePetReq, CreatePetResp, Pet, QueryPetReq, UpdatePetResp } from './pet.interface';
 import { API_URL } from '../../lib/constants';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 interface usePetProps {
-  searchParams?: SearchPetParams;
+  queryPetReq?: QueryPetReq;
   petId?: string;
   onCreateSuccess?: (resp: CreatePetResp) => void;
   onUpdateSuccess?: (resp: UpdatePetResp) => void;
@@ -48,7 +48,7 @@ interface usePetReturn {
 }
 
 export default function usePet(props: usePetProps): usePetReturn {
-  const { searchParams, petId, onCreateSuccess, onUpdateSuccess } = props;
+  const { queryPetReq, petId, onCreateSuccess, onUpdateSuccess } = props;
   const queryClient = useQueryClient();
 
   const {
@@ -57,9 +57,9 @@ export default function usePet(props: usePetProps): usePetReturn {
     isSuccess: isSearchSuccess,
     isError: isSearchError,
   } = useQuery<Pet[]>({
-    queryKey: ['pets', searchParams],
-    queryFn: () => axios.get<Pet[]>(`${API_URL}/pet/query`, { params: searchParams }).then((resp) => resp.data),
-    enabled: !!searchParams,
+    queryKey: ['pets', queryPetReq],
+    queryFn: () => axios.post<Pet[]>(`${API_URL}/pet/query`, queryPetReq).then((resp) => resp.data),
+    enabled: !!queryPetReq,
   });
 
   const searchPetResult: SearchPetResult = {

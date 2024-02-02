@@ -7,7 +7,7 @@ export interface Pet {
   mother?: Pet;
 }
 
-export interface SearchPetParams {
+export interface QueryPetReq {
   name: string;
 }
 
