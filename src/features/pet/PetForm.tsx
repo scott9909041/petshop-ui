@@ -10,6 +10,7 @@ interface PetFormProps {
   isLoading?: boolean;
   error?: Error | null;
   hideSubmitBtn?: boolean;
+  hideCancelBtn?: boolean;
   submitHandler?: (pet: Pet) => void;
   cancelHandler: () => void;
 }
@@ -19,6 +20,7 @@ export default function PetForm({
   submitHandler,
   cancelHandler,
   hideSubmitBtn = false,
+  hideCancelBtn = false,
   submitButtonText = 'Submit',
   disabled = false,
   isLoading = false,
@@ -78,9 +80,9 @@ export default function PetForm({
         )}
         <Divider />
         {!hideSubmitBtn && (
-          <Button type='submit'>{isLoading ? <CircularProgress size='sm' /> : submitButtonText || 'Submit'}</Button>
+          <Button type='submit'>{isLoading ? <CircularProgress size='sm' /> : submitButtonText}</Button>
         )}
-        {!isLoading && (
+        {!hideCancelBtn && !isLoading && (
           <Button
             type='button'
             onClick={cancelClickHandler}

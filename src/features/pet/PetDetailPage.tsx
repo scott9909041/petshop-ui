@@ -57,6 +57,7 @@ export default function PetDetailPage() {
           disabled={true}
           cancelHandler={cancel}
           hideSubmitBtn={true}
+          hideCancelBtn={true}
         />
       )}
       {isError && (

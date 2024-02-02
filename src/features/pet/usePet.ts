@@ -58,7 +58,8 @@ export default function usePet(props: usePetProps): usePetReturn {
     isError: isSearchError,
   } = useQuery<Pet[]>({
     queryKey: ['pets', queryPetReq],
-    queryFn: () => axios.post<Pet[]>(`${API_URL}/pet/query`, queryPetReq).then((resp) => resp.data),
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    queryFn: () => axios.post<Pet[]>(`${API_URL}/pet/query`, queryPetReq).then((resp) => resp.data || []),
     enabled: !!queryPetReq,
   });
 
