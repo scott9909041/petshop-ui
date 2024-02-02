@@ -58,7 +58,7 @@ export default function usePet(props: usePetProps): usePetReturn {
     isError: isSearchError,
   } = useQuery<Pet[]>({
     queryKey: ['pets', searchParams],
-    queryFn: () => axios.get<Pet[]>(`${API_URL}/pet/search`, { params: searchParams }).then((resp) => resp.data),
+    queryFn: () => axios.get<Pet[]>(`${API_URL}/pet/query`, { params: searchParams }).then((resp) => resp.data),
     enabled: !!searchParams,
   });
 
