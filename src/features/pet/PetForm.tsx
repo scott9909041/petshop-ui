@@ -1,6 +1,7 @@
 import { Alert, Box, Button, CircularProgress, Divider, FormControl, FormLabel, Input } from '@mui/joy';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Pet } from './pet.interface';
+import { useEffect } from 'react';
 
 interface PetFormProps {
   pet?: Pet;
@@ -23,17 +24,20 @@ export default function PetForm({
   isLoading = false,
   error,
 }: PetFormProps) {
-  const { register, handleSubmit } = useForm<Pet>({
+  const { register, handleSubmit, reset } = useForm<Pet>({
     defaultValues: pet,
     disabled,
   });
   const submitValidHandler: SubmitHandler<Pet> = (data) => {
-    console.log('here', data);
     submitHandler?.(data);
   };
   const cancelClickHandler = () => {
     cancelHandler();
   };
+
+  useEffect(() => {
+    reset(pet);
+  }, [pet, reset]);
 
   return (
     <form onSubmit={handleSubmit(submitValidHandler)}>

@@ -10,7 +10,7 @@ export default function PetDetailPage() {
   const { petResult } = usePet({ petId: params.id });
   const { data: pet, isLoading, isSuccess, isError } = petResult;
   const cancel = () => {
-    navigate('/pet/serach');
+    navigate(-1);
   };
 
   return (
@@ -26,7 +26,7 @@ export default function PetDetailPage() {
           {/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any */}
           <Box>
             {isSuccess && (
-              <Link to='../edit'>
+              <Link to={`/pet/${params.id}/edit`}>
                 <StyledLink
                   component='button'
                   sx={{

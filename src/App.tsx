@@ -7,6 +7,7 @@ import PetCreatePage from './features/pet/PetCreatePage';
 import PetDetailPage from './features/pet/PetDetailPage';
 import PetListPage from './features/pet/PetListPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import PetEditPage from './features/pet/PetEditPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,7 +49,7 @@ function App() {
             },
             {
               path: ':id/edit',
-              element: <PetDetailPage />,
+              element: <PetEditPage />,
             },
             {
               path: 'create',

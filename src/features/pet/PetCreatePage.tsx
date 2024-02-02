@@ -13,7 +13,7 @@ export default function PetCreatePage() {
   const { createPet, createPetResult } = usePet({ onCreateSuccess });
   const { isPending, error } = createPetResult;
   const cancel = () => {
-    navigate('/pet/serach');
+    navigate(-1);
   };
 
   return (

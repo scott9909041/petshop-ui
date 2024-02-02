@@ -8,6 +8,9 @@ export default function PetSearchPage() {
   const navigate = useNavigate();
 
   const searchPet = () => {
+    if (!searchName) {
+      return;
+    }
     navigate({
       pathname: '../list',
       search: createSearchParams({ name: searchName }).toString(),
