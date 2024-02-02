@@ -7,7 +7,7 @@ import PetTable from './PetTable';
 export default function PetListPage() {
   const [params] = useSearchParams();
   const name = params.get('name');
-  const { searchPetResult } = usePet({ searchParams: name ? { name } : undefined });
+  const { searchPetResult } = usePet({ queryPetReq: name ? { name } : undefined });
   const { data: pets = [], isLoading, isSuccess, isError } = searchPetResult;
 
   return (
