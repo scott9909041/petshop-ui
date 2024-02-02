@@ -1,30 +1,61 @@
-# React + TypeScript + Vite
+# Pet Shop UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A demonstrated UI for pet shop project.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 18 and TypeScript**: For type safety and modern JSX features.
+- **React Query**: For efficient data fetching.
+- **Emotion**: Component Library.
+- **ESLint and Prettier**: For linting and code formatting.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js v18.x or higher.
+- npm as your package manager.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Installation Steps
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. **Clone the repository**
+2. **Install the dependencies**
+
+   ```sh
+   npm install
+   ```
+
+### Running the Application
+
+- **For Development**
+
+  ```sh
+  npm run dev
+  ```
+
+- **For Production Build**
+
+  ```sh
+  npm run build
+  ```
+
+- **Linting**
+
+  To check for linting issues, run:
+
+  ```sh
+  npm run lint
+  ```
+
+- **Code Formatting**
+
+  To format the code, run:
+
+  ```sh
+  npm run format
+  ```
+
+### Browser Support
+
+- **Production**: >0.2%, not dead, not op_mini all
+- **Development**: Last 1 Chrome version, Last 1 Firefox version, Last 1 Safari version

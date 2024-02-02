@@ -2,12 +2,27 @@ import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css';
 import Layout from './Layout';
 import { DEFAULT_ROUTE } from './lib/constants';
-import PetSearchPage from './pages/PetSearchPage';
-import PetCreatePage from './pages/PetCreatePage';
-import PetDetailPage from './pages/PetDetailPage';
+import PetSearchPage from './features/pet/PetSearchPage';
+import PetCreatePage from './features/pet/PetCreatePage';
+import PetDetailPage from './features/pet/PetDetailPage';
+import PetListPage from './features/pet/PetListPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+    },
+  },
+});
 
 function Root() {
-  return <Layout />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Layout />
+    </QueryClientProvider>
+  );
 }
 
 function App() {
@@ -17,26 +32,35 @@ function App() {
       element: <Root />,
       children: [
         {
-          path: 'pet/search',
-          element: <PetSearchPage />,
-        },
-        {
-          path: 'pet/:id/view',
-          element: <PetDetailPage />,
-        },
-        {
-          path: 'pet/:id/edit',
-          element: <PetDetailPage />,
-        },
-        {
-          path: 'pet/create',
-          element: <PetCreatePage />,
-        },
-        {
-          path: '*',
-          element: <Navigate to={DEFAULT_ROUTE} />,
+          path: 'pet',
+          children: [
+            {
+              path: 'search',
+              element: <PetSearchPage />,
+            },
+            {
+              path: 'list',
+              element: <PetListPage />,
+            },
+            {
+              path: ':id/view',
+              element: <PetDetailPage />,
+            },
+            {
+              path: ':id/edit',
+              element: <PetDetailPage />,
+            },
+            {
+              path: 'create',
+              element: <PetCreatePage />,
+            },
+          ],
         },
       ],
+    },
+    {
+      path: '*',
+      element: <Navigate to={DEFAULT_ROUTE} />,
     },
   ]);
 

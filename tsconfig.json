@@ -22,10 +22,4 @@
   },
   "include": ["src", "./.eslintrc.cjs"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "paths": {
-    "@*": ["/*"],
-    "@lib/*": ["lib/*"],
-    "@features/*": ["features/*"],
-    "@pages/*": ["pages/*"]
-  },
 }
