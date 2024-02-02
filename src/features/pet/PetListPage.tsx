@@ -49,7 +49,6 @@ export default function PetListPage() {
           Failed to load pet data.
         </Alert>
       )}
-      <PetTable pets={pets} />
     </StyledSheet>
   );
 }
